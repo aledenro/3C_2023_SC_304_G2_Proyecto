@@ -83,7 +83,7 @@ public class Pila {
 
     public void Menu() {
         int opcion = -1;
-        String[] opciones = {"APilar", "Vaciar Estacionamiento", "Consultar por Placa"};
+        String[] opciones = {"Apilar", "Vaciar Estacionamiento", "Consultar por Placa"};
         while (opcion != opciones.length - 1) {
             opcion = JOptionPane.showOptionDialog(null, "Hotel Country Place", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Estacionamiento");
             switch (opcion) {
