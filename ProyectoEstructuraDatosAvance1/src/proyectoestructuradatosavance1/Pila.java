@@ -94,4 +94,54 @@ public class Pila {
             }
         }
     }
+         /* bunta  ii :Obtener un vehículo del estacionamiento: Recibir como parámetro la
+placa del vehículo, recorrer la pila e indicar cuántos vehículos hay que
+des apilar para sacar el vehículo deseado. */   
+    public String ImprimirAuto(int placa) {
+        
+        String respuesta = "";
+        String temporal = "";
+        int contador = 0;
+        if (!EstaVacia()) {
+            Nodo temp = top;
+            while (temp != null) {
+                temporal += temp.getElemento().getPlaca() + "\n";
+                if (temp.getElemento().getPlaca() == placa) {
+                    respuesta = "Los carros que hay que sacar  son   :  " +String.valueOf(contador);
+                    break;
+                } else if (temp.getElemento().getPlaca() != placa) {
+                    contador++;
+                    temp = temp.getSiguiente();
+                }
+
+            }
+        } else {
+            respuesta = "No hay vehiculos estacionados ";
+        }
+        return respuesta;
+
+}
+    
+    /* bunta vi Verificar si el vehículo está estacionado: Ingresar la placa del vehículo y
+mediante recursividad verificar si está o no estacionado. */
+    public void EstacionadoRecursiva(int placa) {
+      
+
+        
+
+        if (placa == top.getElemento().getPlaca()) {
+
+            System.out.println("Esta estacionado");
+        } else {
+            
+            top=top.getSiguiente();
+            if (top == null) {
+            System.out.println("No esta el vehiculo estacionado");
+            return;
+        }
+            EstacionadoRecursiva(placa);
+        }
+
+    
+}
 }
