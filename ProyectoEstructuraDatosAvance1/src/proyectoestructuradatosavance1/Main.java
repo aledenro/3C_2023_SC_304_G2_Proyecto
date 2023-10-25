@@ -13,21 +13,20 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      // Cola cola = new Cola();
+      Cola cola = new Cola();
        
-       //cola.Encolar();
-       //cola.Encolar();
+       cola.Encolar();
+       cola.Encolar();
+       
+       System.out.println(cola.toString());
+       
        
        //System.out.println(cola.toString());
        
-       //cola.prioridad(cola.getFrente());
-       
-       //System.out.println(cola.toString());
-       
-        //cola.prioridadCliente(cola.getFrente());
+        cola.prioridadCliente(cola.getFrente());
        
         //MenuPrincipal();
-        Pila NuevaPila = new Pila();
+        /*Pila NuevaPila = new Pila();
         NuevaPila.Apilar();
         NuevaPila.Apilar();
         NuevaPila.Apilar();
@@ -37,6 +36,7 @@ public class Main {
         System.out.println(NuevaPila.ImprimirPila());
         System.out.println(NuevaPila.ImprimirAuto(Integer.parseInt(JOptionPane.showInputDialog("Cual es la placa que busca"))));
         NuevaPila.EstacionadoRecursiva(Integer.parseInt(JOptionPane.showInputDialog("Digite su placa para buscar si esta estacionado ")));
+        */
     }
 
     /*public static void MenuPrincipal() {

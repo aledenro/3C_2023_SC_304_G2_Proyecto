@@ -125,15 +125,21 @@ public class Cola {
     }
     
     public void prioridadCliente(NodoCola elemento){
-        if(elemento.getElemento().getMembresia().equals("si")){
+        if(elemento != null && elemento.getElemento().getMembresia().equals("si")){
             Cola colaclone = new Cola();
             colaclone.EncolarClone(elemento);
-             
+            
+            NodoCola aux = frente;
+            
+            while(aux != null){
+                colaclone.EncolarClone(aux);
+                aux = aux.getAtras();
+            } 
         }
         else{
-            elemento = elemento.getAtras();
-            prioridadCliente(elemento); 
+            elemento = elemento.getAtras();   
         }
+        prioridadCliente(elemento);
     }
     
     @Override
