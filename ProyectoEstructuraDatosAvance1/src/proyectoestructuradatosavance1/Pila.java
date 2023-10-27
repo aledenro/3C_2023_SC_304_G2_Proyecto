@@ -64,36 +64,20 @@ public class Pila {
 
     public String ImprimirPila() {
         String respuesta = "";
-        int contar = 0;
         if (!EstaVacia()) {
             Nodo temp = top;
             while (temp != null) {
                 respuesta += temp.getElemento().getPlaca() + "\n";
                 temp = temp.getSiguiente();
-                contar = contar + 1;
 
             }
-
         } else {
             respuesta = "La pila esta vacia";
         }
-        return respuesta + "La cantidad de autos en el estacionamiento es " + contar;
+        return respuesta;
 
     }
 
-    public void Menu() {
-        int opcion = -1;
-        String[] opciones = {"Apilar", "Vaciar Estacionamiento", "Consultar por Placa"};
-        while (opcion != opciones.length - 1) {
-            opcion = JOptionPane.showOptionDialog(null, "Hotel Country Place", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Estacionamiento");
-            switch (opcion) {
-                case 0:
-
-                    break;
-
-            }
-        }
-    }
          /* bunta  ii :Obtener un vehículo del estacionamiento: Recibir como parámetro la
 placa del vehículo, recorrer la pila e indicar cuántos vehículos hay que
 des apilar para sacar el vehículo deseado. */   
@@ -119,29 +103,53 @@ des apilar para sacar el vehículo deseado. */
             respuesta = "No hay vehiculos estacionados ";
         }
         return respuesta;
-
 }
     
     /* bunta vi Verificar si el vehículo está estacionado: Ingresar la placa del vehículo y
 mediante recursividad verificar si está o no estacionado. */
     public void EstacionadoRecursiva(int placa) {
-      
-
-        
 
         if (placa == top.getElemento().getPlaca()) {
 
-            System.out.println("Esta estacionado");
+            JOptionPane.showMessageDialog(null,"Esta estacionado");
         } else {
             
             top=top.getSiguiente();
             if (top == null) {
-            System.out.println("No esta el vehiculo estacionado");
+            JOptionPane.showMessageDialog(null,"No esta el vehiculo estacionado");
             return;
         }
             EstacionadoRecursiva(placa);
         }
-
+    }
     
-}
+    public String Conteo() {
+        String respuesta = "";
+        int contar = 0;
+        if (!EstaVacia()) {
+            Nodo temp = top;
+            while (temp != null) {
+                temp = temp.getSiguiente();
+                contar = contar + 1;
+            }
+            respuesta = "La cantidad de vehiculos en el estacionamiento es de: " + contar;
+        } else {
+            respuesta = "La pila esta vacia";
+        }
+        return respuesta;
+    }
+    
+    public void vaciarParqueo(){
+        if(!EstaVacia()){
+            Nodo aux = top;
+            
+            while(aux != null){
+                Desapilar();
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "El estacionamiento está vacío.");
+        }
+    }
+    
 }

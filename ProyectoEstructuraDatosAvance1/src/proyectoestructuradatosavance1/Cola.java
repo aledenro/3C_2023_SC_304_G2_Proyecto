@@ -55,12 +55,9 @@ public class Cola {
             ultimo = encolar;
         }                                  
     }
-    
-     
-    
-    
+
     public void clienteSiguiente(){
-        System.out.println("El proximo cliente de la cola es:"
+        JOptionPane.showMessageDialog(null,"El proximo cliente de la cola es:"
                          + "\nNombre: " + frente.getElemento().getNombre()
                          + "\nCedula: " + frente.getElemento().getCedula()
                          + "\nEdad: " + frente.getElemento().getEdad()
@@ -70,11 +67,19 @@ public class Cola {
     }
     
     public void vaciarCola(){
-        while(frente != null){
-            frente = frente.getAtras();
-        }
-        System.out.println("La cola está vacia.");
         
+        if(frente != null){
+            while(frente != null){
+                frente = frente.getAtras();
+            }
+
+            if(frente == null){
+                JOptionPane.showMessageDialog(null,"La cola se vacío correctamente.");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"La cola está vacía.");
+        }
     }
     
     public void posicionCliente() {
@@ -83,13 +88,13 @@ public class Cola {
         NodoCola temp = frente; 
 
         if (temp == null) {
-            System.out.println("La cola está vacía.");
+            JOptionPane.showMessageDialog(null,"La cola está vacía.");
         } 
         else {
             while (temp != null) {
                 if (cedula == temp.getElemento().getCedula()) {
                     posicion += 1;
-                    System.out.println("La persona buscada está en la posición número " + posicion + ".");
+                    JOptionPane.showMessageDialog(null,"La persona buscada está en la posición número " + posicion + ".");
                     break; 
                 } 
                 else {
@@ -99,7 +104,7 @@ public class Cola {
             }
 
             if (temp == null) {
-                System.out.println("La persona buscada no está en la cola.");
+                JOptionPane.showMessageDialog(null,"La persona buscada no está en la cola.");
                 }
         }
     }
@@ -109,14 +114,14 @@ public class Cola {
         NodoCola temp = frente;
         
         if (temp == null) {
-            System.out.println("La cola está vacía.");
+            JOptionPane.showMessageDialog(null,"La cola está vacía.");
         }
         else{
             while (temp != null) {
                 tam += 1;
                 temp = temp.getAtras();
             }
-            System.out.println("El tamaño de la cola es de " + tam + " clientes.");
+            JOptionPane.showMessageDialog(null,"El tamaño de la cola es de " + tam + " clientes.");
         }
     }
     
@@ -202,15 +207,14 @@ public class Cola {
             ultimoAux = encolar;
         }                                
     }
-    
-    int contadorPrioridad = 0;
 
     public void prioridadCliente(NodoCola elemento) {
+        
         if (elemento != null) {
             if (elemento.getElemento().getMembresia().equals("si")) {
                 EncolarClone(elemento);
                 
-                contadorPrioridad++;
+
                 frente = frente.getAtras();
             } else {
                 if (elemento.getElemento().getMembresia().equals("no")) {
@@ -221,8 +225,7 @@ public class Cola {
             }
             prioridadCliente(frente);
         } else {
-            System.out.println("los clientes con prioridad son: " + contadorPrioridad);
-         
+
             while (frenteClone != null) {
                 EncolarCola(frenteClone.getElemento());
                 frenteClone = frenteClone.getAtras();
