@@ -33,8 +33,12 @@ public class Cola {
         c.setNombre(JOptionPane.showInputDialog("Ingrese el nombre completo del cliente."));
         c.setCedula(Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cedula del cliente sin guiones.")));
         c.setEdad(Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del cliente.")));
-        c.setMembresia(JOptionPane.showInputDialog("¿El cliente cuenta con menbresia?"
-                                                 + "\nIngrese si o no.").toLowerCase());
+        int membresia =JOptionPane.showConfirmDialog(null, "¿Tiene membresia?", "Alerta!", JOptionPane.YES_NO_OPTION);
+        if(membresia==0){
+            c.setMembresia("si");
+        }else{
+            c.setMembresia("no");
+        }
         c.setFechaReserva(JOptionPane.showInputDialog("Ingrese la fecha de la reserva en el siguiente formato."
                                                     + "\n01-01-2023"));
         
@@ -52,16 +56,8 @@ public class Cola {
         }                                  
     }
     
-    public void EncolarClone(NodoCola elemento){
-        if(frente == null){
-            frente = elemento;
-            ultimo = elemento;
-        }
-        else{
-            ultimo.setAtras(elemento);
-            ultimo = elemento;
-        }  
-    }
+     
+    
     
     public void clienteSiguiente(){
         System.out.println("El proximo cliente de la cola es:"
@@ -124,24 +120,7 @@ public class Cola {
         }
     }
     
-    public void prioridadCliente(NodoCola elemento){
-        if(elemento != null && elemento.getElemento().getMembresia().equals("si")){
-            Cola colaclone = new Cola();
-            colaclone.EncolarClone(elemento);
-            
-            NodoCola aux = frente;
-            
-            while(aux != null){
-                colaclone.EncolarClone(aux);
-                aux = aux.getAtras();
-            } 
-        }
-        else{
-            elemento = elemento.getAtras();   
-        }
-        prioridadCliente(elemento);
-    }
-    
+   
     @Override
     public String toString(){
         String cadena = "Los clientes en la cola son:";
@@ -165,4 +144,97 @@ public class Cola {
         return cadena;
     }
     
+    //bunta 5.vi//
+     public void EncolarCola(Clientes ci){
+        Clientes c = new Clientes();
+        
+        c.setNombre(ci.getNombre());
+        c.setCedula(ci.getCedula());
+        c.setEdad(ci.getEdad());
+        c.setMembresia(ci.getMembresia());
+        c.setFechaReserva(ci.getFechaReserva());
+        
+        NodoCola encolar = new NodoCola();
+        
+        encolar.setElemento(c);
+        
+        if(frente == null){
+            frente = encolar;
+            ultimo = encolar;
+        }
+        else{
+            ultimo.setAtras(encolar);
+            ultimo = encolar;
+        }                                 
+    }
+    
+    NodoCola frenteClone;
+    NodoCola ultimoClone;
+    NodoCola frenteAux;
+    NodoCola ultimoAux;
+    
+    public void EncolarClone(NodoCola elemento){
+        NodoCola encolar = new NodoCola();
+        
+        encolar.setElemento(elemento.getElemento());
+        
+        if(frenteClone == null){
+            frenteClone = encolar;
+            ultimoClone = encolar;
+        }
+        else{
+            ultimoClone.setAtras(encolar);
+            ultimoClone = encolar;
+        }                       
+    }
+    
+    public void Encolaraux(NodoCola elemento){
+          NodoCola encolar = new NodoCola();
+        
+        encolar.setElemento(elemento.getElemento());
+        
+        if(frenteAux == null){
+            frenteAux = encolar;
+            ultimoAux = encolar;
+        }
+        else{
+            ultimoAux.setAtras(encolar);
+            ultimoAux = encolar;
+        }                                
+    }
+    
+    int contadorPrioridad = 0;
+
+    public void prioridadCliente(NodoCola elemento) {
+        if (elemento != null) {
+            if (elemento.getElemento().getMembresia().equals("si")) {
+                EncolarClone(elemento);
+                
+                contadorPrioridad++;
+                frente = frente.getAtras();
+            } else {
+                if (elemento.getElemento().getMembresia().equals("no")) {
+                    Encolaraux(elemento);
+                    
+                    frente = frente.getAtras();
+                }
+            }
+            prioridadCliente(frente);
+        } else {
+            System.out.println("los clientes con prioridad son: " + contadorPrioridad);
+         
+            while (frenteClone != null) {
+                EncolarCola(frenteClone.getElemento());
+                frenteClone = frenteClone.getAtras();
+            }
+            while (frenteAux != null) {
+                EncolarCola(frenteAux.getElemento());
+                frenteAux = frenteAux.getAtras();
+            }
+        }
+    }
+         
+    
+    
 }
+

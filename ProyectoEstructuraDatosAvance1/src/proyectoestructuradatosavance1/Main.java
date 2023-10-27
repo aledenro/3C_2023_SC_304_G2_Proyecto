@@ -17,13 +17,16 @@ public class Main {
        
        cola.Encolar();
        cola.Encolar();
-       
+       cola.Encolar();
+       cola.Encolar();
        System.out.println(cola.toString());
-       
+       cola.prioridadCliente(cola.getFrente());
+        
+        System.out.println("Nueva Cola");
+        System.out.println(cola.toString());
        
        //System.out.println(cola.toString());
        
-        cola.prioridadCliente(cola.getFrente());
        
         //MenuPrincipal();
         /*Pila NuevaPila = new Pila();
