@@ -2,4 +2,6 @@
 Proyecto  Final Estructura de Datos Grupo 2 Tercer Cuatrimestre 2023
 
 Integrantes del Grupo:
-Alejandro Denver
+Alejandro Denver Romero
+Valeria Rodriguez Jimemez
+Buntaro  Olivares Contreras 
