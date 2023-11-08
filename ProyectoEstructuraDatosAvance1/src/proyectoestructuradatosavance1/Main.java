@@ -1,8 +1,6 @@
-
 package proyectoestructuradatosavance1;
 
 import javax.swing.JOptionPane;
-
 
 public class Main {
 
@@ -14,10 +12,10 @@ public class Main {
      */
     public static void main(String[] args) {
         MenuPrincipal();
-       
+
     }
-        
-       public static void MenuPrincipal() {
+
+    public static void MenuPrincipal() {
         String[] opciones = {"Autos", "Clientes", "Salir"};
         int opcion = -1;
         while (opcion != opciones.length - 1) {
@@ -58,7 +56,7 @@ public class Main {
                     JOptionPane.showMessageDialog(null, pila.Conteo());
                     break;
                 case 4:
-                    JOptionPane.showMessageDialog(null,pila.ImprimirPila());
+                    JOptionPane.showMessageDialog(null, pila.ImprimirPila());
                     break;
                 case 5:
                     placa = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la placa a buscar"));
@@ -94,10 +92,82 @@ public class Main {
                 case 4:
                     cola.tamañoCola();
                 case 5:
-                   cola.prioridadCliente(cola.getFrente());
-                   JOptionPane.showMessageDialog(null, cola.toString());
+                    cola.prioridadCliente(cola.getFrente());
+                    JOptionPane.showMessageDialog(null, cola.toString());
                     break;
                 case 6:
+                    break;
+
+            }
+        }
+    }
+
+    public static void MenuSecundarioDesayunos() {
+        ListaSimpleCircular LSC = new ListaSimpleCircular();
+        String[] opciones = {"Ingresar Desayuno", "Ver Desayunos", "Modificar Desayuno", "Desayunos dieteticos", "Salir"};
+        int opcion = -1;
+        while (opcion != opciones.length - 1) {
+            opcion = JOptionPane.showOptionDialog(null, "Menu Desayunos", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
+            switch (opcion) {
+                case 0:
+                    break;
+                case 1:
+                    LSC.toString();
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+
+            }
+        }
+    }
+
+    public static void MenuSecundarioItinerario() {
+        Cola cola = new Cola();
+        String[] opciones = {"Ingresar Nueva Actividad", "Ver Itinerario", "Eliminar actividad", "Tipo de Actividad", "Salir"};
+        int opcion = -1;
+        while (opcion != opciones.length - 1) {
+            opcion = JOptionPane.showOptionDialog(null, "Menu Itinerario", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
+            switch (opcion) {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+
+            }
+        }
+    }
+
+    public static void MenuSecundarioHabitaciones() {
+        Cola cola = new Cola();
+        String[] opciones = {"Ingresar Nueva Habitacion", "Reservar habitacion", "Ver Habitaciones disponibles", "Incrementar tarifa", "Salir"};
+        int opcion = -1;
+        while (opcion != opciones.length - 1) {
+            opcion = JOptionPane.showOptionDialog(null, "Menu Habitaciones", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
+            switch (opcion) {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
                     break;
 
             }
