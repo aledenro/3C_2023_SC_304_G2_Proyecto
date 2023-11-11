@@ -16,7 +16,7 @@ public class Main {
     }
 
     public static void MenuPrincipal() {
-        String[] opciones = {"Autos", "Clientes", "Salir"};
+        String[] opciones = {"Autos", "Clientes","Desayunos","Itinerarios","Habitaciones", "Salir"};
         int opcion = -1;
         while (opcion != opciones.length - 1) {
             opcion = JOptionPane.showOptionDialog(null, "Bienvenido al Hotel", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
@@ -27,7 +27,17 @@ public class Main {
                 case 1:
                     MenuSecundarioClientes();
                     break;
+                case 2:
+                    MenuSecundarioDesayunos();
+                    break;
                 case 3:
+                    MenuSecundarioItinerario();
+                    break;
+                case 4:
+                    MenuSecundarioHabitaciones();
+                    break;
+              
+                case 5:
                     System.exit(0); //Termina la aplicación.
                     break;
 
@@ -127,7 +137,7 @@ public class Main {
     }
 
     public static void MenuSecundarioItinerario() {
-        Cola cola = new Cola();
+        ListaDobleCircular l = new ListaDobleCircular();
         String[] opciones = {"Ingresar Nueva Actividad", "Ver Itinerario", "Eliminar actividad", "Tipo de Actividad", "Salir"};
         int opcion = -1;
         while (opcion != opciones.length - 1) {
@@ -153,7 +163,7 @@ public class Main {
     }
 
     public static void MenuSecundarioHabitaciones() {
-        Cola cola = new Cola();
+        ListaDobleCircular l = new ListaDobleCircular();
         String[] opciones = {"Ingresar Nueva Habitacion", "Reservar habitacion", "Ver Habitaciones disponibles", "Incrementar tarifa", "Salir"};
         int opcion = -1;
         while (opcion != opciones.length - 1) {

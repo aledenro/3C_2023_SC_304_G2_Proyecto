@@ -4,49 +4,58 @@
  */
 package proyectoestructuradatosavance1;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author valer
  */
 public class ListaDobleCircular {
-    
-        private NodoLDC cabeza;
+
+    private NodoLDC cabeza;
     private NodoLDC ultimo;
 //i. Ingresar nuevas habitaciones
-       public void Insertar(Habitaciones p){
-        //Paso 1:
-        if(cabeza == null){
+
+    public void Insertar(Habitaciones p) {
+        //private int idHabitacion;
+        //private int tipo;
+        //private int cantidadCamas;
+        //private boolean disponibilidad;
+        Habitaciones h = new Habitaciones();
+     
+        
+        
+        
+        // Crear el objeto Habitaciones con la entrada del usuario
+        if (cabeza == null) {
             cabeza = new NodoLDC(p);
             ultimo = cabeza;
             cabeza.setAnterior(ultimo);
             cabeza.setSiguiente(ultimo);
             ultimo.setSiguiente(cabeza);
             ultimo.setAnterior(cabeza);
-            
-        }
-        else{
-            if(cabeza.getDato().getIdHabitacion()> p.getIdHabitacion()){
+
+        } else {
+            if (cabeza.getDato().getIdHabitacion() > p.getIdHabitacion()) {
                 NodoLDC aux = new NodoLDC(p);
                 aux.setSiguiente(cabeza);
                 cabeza.setAnterior(aux);
                 cabeza = aux;
                 cabeza.setAnterior(ultimo);
                 ultimo.setSiguiente(cabeza);
-                
-            }
-            else{
-                if(p.getIdHabitacion()> ultimo.getDato().getIdHabitacion()){
+
+            } else {
+                if (p.getIdHabitacion() > ultimo.getDato().getIdHabitacion()) {
                     NodoLDC aux = new NodoLDC(p);
                     aux.setAnterior(ultimo);
                     ultimo.setSiguiente(aux);
                     ultimo = aux;
                     ultimo.setSiguiente(cabeza);
                     cabeza.setAnterior(ultimo);
-                }
-                else{
+                } else {
                     NodoLDC aux = cabeza.getSiguiente();
-                    while(aux.getDato().getIdHabitacion()< p.getIdHabitacion()){
-                       aux = aux.getSiguiente();
+                    while (aux.getDato().getIdHabitacion() < p.getIdHabitacion()) {
+                        aux = aux.getSiguiente();
                     }
                     NodoLDC temp = new NodoLDC(p);
                     temp.setAnterior(aux.getAnterior());
@@ -57,30 +66,26 @@ public class ListaDobleCircular {
             }
         }
     }
-    
+
 //ii. Reservar una habitación: El usuario ingresa el tipo de habitación que
 //desea y se deben mostrar las habitaciones disp   
-    
-       
-       
 //iii. Imprimir habitacones       
-       @Override
+    @Override
     public String toString() {
         String respuesta = "Habitaciones \n";
-        if(cabeza != null){
+        if (cabeza != null) {
             NodoLDC aux = cabeza;
             respuesta += aux.toString() + "\n";
             aux = aux.getSiguiente();
-            while(aux != cabeza){
+            while (aux != cabeza) {
                 respuesta += aux.toString() + "\n";
                 aux = aux.getSiguiente();
             }
-        }
-        else{
+        } else {
             respuesta += "No hay habitaciones";
         }
         return respuesta;
     }
-    
+
 //iv. Incrementar tarifa 
 }

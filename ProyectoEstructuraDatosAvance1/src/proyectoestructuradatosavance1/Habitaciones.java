@@ -13,6 +13,7 @@ public class Habitaciones {
     private int tipo;
     private int cantidadCamas;
     private boolean disponibilidad;
+   
 
     public Habitaciones() {
     }
