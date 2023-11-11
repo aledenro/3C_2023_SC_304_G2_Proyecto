@@ -12,24 +12,24 @@ public class Habitaciones {
     private int idHabitacion;
     private int tipo;
     private int cantidadCamas;
-    private boolean disponibilidad;
+    private String disponibilidad;
    
 
     public Habitaciones() {
     }
 
-    public Habitaciones(int idHabitacion, int tipo, int cantidadCamas, boolean disponibilidad) {
+    public Habitaciones(int idHabitacion, int tipo, int cantidadCamas, String disponibilidad) {
         this.idHabitacion = idHabitacion;
         this.tipo = tipo;
         this.cantidadCamas = cantidadCamas;
         this.disponibilidad = disponibilidad;
     }
 
-    public boolean isDisponibilidad() {
+    public String isDisponibilidad() {
         return disponibilidad;
     }
 
-    public void setDisponibilidad(boolean disponibilidad) {
+    public void setDisponibilidad(String disponibilidad) {
         this.disponibilidad = disponibilidad;
     }
 

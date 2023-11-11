@@ -8,12 +8,12 @@ package proyectoestructuradatosavance1;
  *
  * @author valer
  */
-public class NodoLDC2 {
+public class NodoActividad {
     private Actividad dato;
-    NodoLDC2 anterior;
-    NodoLDC2 siguiente;
+    NodoActividad anterior;
+    NodoActividad siguiente;
 
-    public NodoLDC2(Actividad dato) {
+    public NodoActividad(Actividad dato) {
         this.dato = dato;
     }
 
@@ -25,19 +25,19 @@ public class NodoLDC2 {
         this.dato = dato;
     }
 
-    public NodoLDC2 getAnterior() {
+    public NodoActividad getAnterior() {
         return anterior;
     }
 
-    public void setAnterior(NodoLDC2 anterior) {
+    public void setAnterior(NodoActividad anterior) {
         this.anterior = anterior;
     }
 
-    public NodoLDC2 getSiguiente() {
+    public NodoActividad getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(NodoLDC2 siguiente) {
+    public void setSiguiente(NodoActividad siguiente) {
         this.siguiente = siguiente;
     }
 

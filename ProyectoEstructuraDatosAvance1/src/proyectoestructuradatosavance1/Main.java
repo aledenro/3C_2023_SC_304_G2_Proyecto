@@ -3,7 +3,7 @@ package proyectoestructuradatosavance1;
 import javax.swing.JOptionPane;
 
 public class Main {
-
+    
     private static Autos autos = new Autos();
     private static Clientes clientes = new Clientes();
 
@@ -12,11 +12,11 @@ public class Main {
      */
     public static void main(String[] args) {
         MenuPrincipal();
-
+        
     }
-
+    
     public static void MenuPrincipal() {
-        String[] opciones = {"Autos", "Clientes","Desayunos","Itinerarios","Habitaciones", "Salir"};
+        String[] opciones = {"Autos", "Clientes", "Desayunos", "Itinerarios", "Habitaciones", "Salir"};
         int opcion = -1;
         while (opcion != opciones.length - 1) {
             opcion = JOptionPane.showOptionDialog(null, "Bienvenido al Hotel", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
@@ -36,15 +36,15 @@ public class Main {
                 case 4:
                     MenuSecundarioHabitaciones();
                     break;
-              
+                
                 case 5:
                     System.exit(0); //Termina la aplicación.
                     break;
-
+                
             }
         }
     }
-
+    
     public static void MenuSecundarioAutos() {
         Pila pila = new Pila();//creamos donde se guardaran los datos de la pila
         String[] opciones = {"Ingresar un Vehiculo", "Obtener Vehiculo", "Vaciar el Estacionamiento", "Cantidad de Vehiculos Estacionados", "Ver Vehiculos Estacionados", "Verificar si está Estacionado", "Regresar"};
@@ -72,14 +72,14 @@ public class Main {
                     placa = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la placa a buscar"));
                     pila.EstacionadoRecursiva(placa);
                     break;
-
+                
                 case 6:
                     break;
-
+                
             }
         }
     }
-
+    
     public static void MenuSecundarioClientes() {
         Cola cola = new Cola();
         String[] opciones = {"Ingresar Cliente", "Atender Cliente", "Vaciar Cola", "Ubicar Posicion del Cliente", "Cantidad de Clientes", "Prioridad con Membresia", "Salir"};
@@ -107,11 +107,11 @@ public class Main {
                     break;
                 case 6:
                     break;
-
+                
             }
         }
     }
-
+    
     public static void MenuSecundarioDesayunos() {
         ListaSimpleCircular LSC = new ListaSimpleCircular();
         String[] opciones = {"Ingresar Desayuno", "Ver Desayunos", "Modificar Desayuno", "Desayunos dieteticos", "Salir"};
@@ -125,17 +125,17 @@ public class Main {
                     LSC.toString();
                     break;
                 case 2:
-
+                    
                     break;
                 case 3:
                     break;
                 case 4:
                     break;
-
+                
             }
         }
     }
-
+    
     public static void MenuSecundarioItinerario() {
         ListaDobleCircular l = new ListaDobleCircular();
         String[] opciones = {"Ingresar Nueva Actividad", "Ver Itinerario", "Eliminar actividad", "Tipo de Actividad", "Salir"};
@@ -157,11 +157,11 @@ public class Main {
                     break;
                 case 6:
                     break;
-
+                
             }
         }
     }
-
+    
     public static void MenuSecundarioHabitaciones() {
         ListaDobleCircular l = new ListaDobleCircular();
         String[] opciones = {"Ingresar Nueva Habitacion", "Reservar habitacion", "Ver Habitaciones disponibles", "Incrementar tarifa", "Salir"};
@@ -170,6 +170,7 @@ public class Main {
             opcion = JOptionPane.showOptionDialog(null, "Menu Habitaciones", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
             switch (opcion) {
                 case 0:
+                    
                     break;
                 case 1:
                     break;
@@ -179,7 +180,7 @@ public class Main {
                     break;
                 case 4:
                     break;
-
+                
             }
         }
     }

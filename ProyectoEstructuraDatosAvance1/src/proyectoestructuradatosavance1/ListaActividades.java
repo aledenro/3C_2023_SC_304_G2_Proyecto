@@ -10,26 +10,20 @@ import javax.swing.JOptionPane;
  *
  * @author valer
  */
-public class ListaDobleCircular {
+public class ListaActividades {
 
-    private NodoLDC cabeza;
-    private NodoLDC ultimo;
+    private NodoActividad cabeza;
+    private NodoActividad ultimo;
 //i. Ingresar nuevas habitaciones
 
-    public void Insertar(Habitaciones p) {
-        //private int idHabitacion;
-        //private int tipo;
-        //private int cantidadCamas;
-        //private boolean disponibilidad;
-        Habitaciones h = new Habitaciones();
-        h.setIdHabitacion(Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id de la habitacion.")));
-        h.setTipo(Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tipo de habitacion.")));
-        h.setCantidadCamas(Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de camas de la habitacion")));
-        h.setDisponibilidad(JOptionPane.showInputDialog("Esta disponible SI o NO"));
+    public void Insertar(Actividad a) {
+     
+        Actividad h = new Actividad();
+ 
         
-        // Crear el objeto Habitaciones con la entrada del usuario
+        // Crear el objeto Actividad con la entrada del usuario
         if (cabeza == null) {
-            cabeza = new NodoLDC(p);
+            cabeza = new NodoActividad(a);
             ultimo = cabeza;
             cabeza.setAnterior(ultimo);
             cabeza.setSiguiente(ultimo);
@@ -37,8 +31,8 @@ public class ListaDobleCircular {
             ultimo.setAnterior(cabeza);
 
         } else {
-            if (cabeza.getDato().getIdHabitacion() > p.getIdHabitacion()) {
-                NodoLDC aux = new NodoLDC(p);
+            if (cabeza.getDato().getIdActividad()> a.getIdActividad()) {
+                NodoActividad aux = new NodoActividad(a);
                 aux.setSiguiente(cabeza);
                 cabeza.setAnterior(aux);
                 cabeza = aux;
@@ -46,19 +40,19 @@ public class ListaDobleCircular {
                 ultimo.setSiguiente(cabeza);
 
             } else {
-                if (p.getIdHabitacion() > ultimo.getDato().getIdHabitacion()) {
-                    NodoLDC aux = new NodoLDC(p);
+                if (a.getIdActividad()> ultimo.getDato().getIdActividad()) {
+                    NodoActividad aux = new NodoActividad(a);
                     aux.setAnterior(ultimo);
                     ultimo.setSiguiente(aux);
                     ultimo = aux;
                     ultimo.setSiguiente(cabeza);
                     cabeza.setAnterior(ultimo);
                 } else {
-                    NodoLDC aux = cabeza.getSiguiente();
-                    while (aux.getDato().getIdHabitacion() < p.getIdHabitacion()) {
+                    NodoActividad aux = cabeza.getSiguiente();
+                    while (aux.getDato().getIdActividad()< a.getIdActividad()) {
                         aux = aux.getSiguiente();
                     }
-                    NodoLDC temp = new NodoLDC(p);
+                    NodoActividad temp = new NodoActividad(a);
                     temp.setAnterior(aux.getAnterior());
                     temp.setSiguiente(aux);
                     aux.setAnterior(temp);
@@ -73,9 +67,9 @@ public class ListaDobleCircular {
 //iii. Imprimir habitacones       
     @Override
     public String toString() {
-        String respuesta = "Habitaciones \n";
+        String respuesta = "Actividad \n";
         if (cabeza != null) {
-            NodoLDC aux = cabeza;
+            NodoActividad aux = cabeza;
             respuesta += aux.toString() + "\n";
             aux = aux.getSiguiente();
             while (aux != cabeza) {
