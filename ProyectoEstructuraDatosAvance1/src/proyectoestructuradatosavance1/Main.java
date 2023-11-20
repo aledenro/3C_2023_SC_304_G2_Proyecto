@@ -6,11 +6,13 @@ public class Main {
     
     private static Autos autos = new Autos();
     private static Clientes clientes = new Clientes();
+    
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         MenuPrincipal();
         
     }
@@ -19,7 +21,7 @@ public class Main {
         String[] opciones = {"Autos", "Clientes", "Desayunos", "Itinerarios", "Habitaciones", "Salir"};
         int opcion = -1;
         while (opcion != opciones.length - 1) {
-            opcion = JOptionPane.showOptionDialog(null, "Bienvenido al Hotel", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
+            opcion = JOptionPane.showOptionDialog(null, "Bienvenido al Hotel", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");
             switch (opcion) {
                 case 0:
                     MenuSecundarioAutos();
@@ -137,27 +139,37 @@ public class Main {
     }
     
     public static void MenuSecundarioItinerario() {
-        ListaDobleCircular l = new ListaDobleCircular();
-        String[] opciones = {"Ingresar Nueva Actividad", "Ver Itinerario", "Eliminar actividad", "Tipo de Actividad", "Salir"};
+        
+        ListaActividades la = new ListaActividades();
+        String[] opciones = {"Ingresar Nueva Actividad", "Ver Todas las Actividades", "Eliminar Actividad", "Mostrar Actividades por Horario", "Salir"};
         int opcion = -1;
         while (opcion != opciones.length - 1) {
-            opcion = JOptionPane.showOptionDialog(null, "Menu Itinerario", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
+            opcion = JOptionPane.showOptionDialog(null, "Menu Itinerario", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");
             switch (opcion) {
                 case 0:
+                    int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la actividad"));
+                    String nombre = JOptionPane.showInputDialog("Ingrese el nombre de la actividad");
+                    String[] horario = {"Diurno", "Nocturno"};
+                    int horarios = JOptionPane.showOptionDialog(null, "Horario de la Actividad", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, horario, "Menu");
+                    int precio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el precio de la actividad"));
+                    la.Insertar(new Actividad(id, nombre, horario[horarios], precio));
                     break;
                 case 1:
+                    String[] orden = {"A", "D"};
+                    int Orden = JOptionPane.showOptionDialog(null, "Seleccione A para mostrarlo de forma ascendente y D para mostralo de forma descendente", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, orden, "Menu");
+                    System.out.println(la.imprimirActividades(orden[Orden]));
                     break;
                 case 2:
+                    int borrarid = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la actividad que desea eliminar"));
+                    la.elimarActividad(borrarid);
                     break;
                 case 3:
+                    String[] horarioP = {"Diurno", "Nocturno"};
+                    horarios = JOptionPane.showOptionDialog(null, "Menu Itinerario", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, horarioP, "Menu");
+                    System.out.println(la.imprimirPorHorario(horarioP[horarios]));
                     break;
                 case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                
+                    break;   
             }
         }
     }

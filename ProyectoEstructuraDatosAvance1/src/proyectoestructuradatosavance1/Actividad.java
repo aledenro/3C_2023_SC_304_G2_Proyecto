@@ -11,16 +11,16 @@ package proyectoestructuradatosavance1;
 public class Actividad {
     private int idActividad;
     private String descripcionActividad;
-    private int tipoHorario;
+    private String horario;
     private int costo;
 
     public Actividad() {
     }
 
-    public Actividad(int idActividad, String descripcionActividad, int tipoHorario, int costo) {
+    public Actividad(int idActividad, String descripcionActividad, String horario, int costo) {
         this.idActividad = idActividad;
         this.descripcionActividad = descripcionActividad;
-        this.tipoHorario = tipoHorario;
+        this.horario = horario;
         this.costo = costo;
     }
 
@@ -48,17 +48,17 @@ public class Actividad {
         this.descripcionActividad = descripcionActividad;
     }
 
-    public int getTipoHorario() {
-        return tipoHorario;
+    public String getHorario() {
+        return horario;
     }
 
-    public void setTipoHorario(int tipoHorario) {
-        this.tipoHorario = tipoHorario;
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
 
     @Override
     public String toString() {
-        return "Actividad{" + "idActividad=" + idActividad + ", descripcionActividad=" + descripcionActividad + ", tipoHorario=" + tipoHorario + ", costo=" + costo + '}';
+        return "Actividad{" + "idActividad=" + idActividad + ", descripcionActividad=" + descripcionActividad + ", Horario=" + horario + ", costo=" + costo + '}' + "\n";
     }
     
     

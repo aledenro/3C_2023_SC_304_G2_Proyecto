@@ -13,6 +13,9 @@ public class NodoActividad {
     NodoActividad anterior;
     NodoActividad siguiente;
 
+    public NodoActividad() {
+    }
+
     public NodoActividad(Actividad dato) {
         this.dato = dato;
     }
