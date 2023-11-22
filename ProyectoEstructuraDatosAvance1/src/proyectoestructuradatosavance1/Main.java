@@ -12,12 +12,21 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        ListaSimpleCircular LSCC = new ListaSimpleCircular();
+        LSCC.Insertar(new Desayunos(1,"A",1,10));
+        LSCC.Insertar(new Desayunos(2,"B",1,20));
+        LSCC.Insertar(new Desayunos(3,"C",1,30));
+        LSCC.Insertar(new Desayunos(4,"D",1,50));
+        LSCC.Insertar(new Desayunos(5, "C", 1, 40));
+        LSCC.ConsultaCalorias(35);
         
-        MenuPrincipal();
+        //Eran test para probart todo borrar todo lo de arriba
+        //MenuPrincipal();
         
     }
+}
     
-    public static void MenuPrincipal() {
+    /*public static void MenuPrincipal() {
         String[] opciones = {"Autos", "Clientes", "Desayunos", "Itinerarios", "Habitaciones", "Salir"};
         int opcion = -1;
         while (opcion != opciones.length - 1) {
@@ -197,3 +206,4 @@ public class Main {
         }
     }
 }
+*/

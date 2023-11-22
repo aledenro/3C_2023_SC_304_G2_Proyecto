@@ -50,8 +50,8 @@ public class ListaSimpleCircular {
     
     
     }
-    
-//ii. Imprimir Desayunos
+    //iii.Modifica el desayuno
+
     public void Modifica(Desayunos o) {
         if (cabeza != null) {
             if (o.getIdDesayuno() >= cabeza.getDato().getIdDesayuno() && o.getIdDesayuno() <= ultimo.getDato().getIdDesayuno()) {
@@ -67,7 +67,7 @@ public class ListaSimpleCircular {
         }
 
     }
-//iii.Modifica el desayuno
+//ii. Imprimir Desayunos
     @Override
     public String toString() {
         String respuesta = "Lista circular: \n";
@@ -90,5 +90,19 @@ public class ListaSimpleCircular {
 //iv. Crear un método que permita obtener la lista de los desayunos que
 //tienen menos de cierta cantidad de calorías: El usuario ingresa la
 //cantidad de calorías y se le muestra la lista con los desayunos que
-//tienen menos de esa cantidad. (5)
+//tienen menos de esa cantidad. 
+    public void ConsultaCalorias(int calorias) {
+
+        if (cabeza != null) {
+
+            NodoLSC aux = cabeza;
+            do {
+                if (aux.getDato().getCalorias() < calorias) {
+                    System.out.println(aux.getDato());
+                }
+                aux = aux.getSiguiente();
+            } while (aux != cabeza);
+        }//Problema se hace dirigido a la cabeza
+    }
 }
+    
