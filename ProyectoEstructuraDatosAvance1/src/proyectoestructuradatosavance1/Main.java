@@ -190,7 +190,7 @@ public class Main {
                 case 0:
                     int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la habitación"));
                     String[] tipoHab = {"Estandar", "Premium"};
-                    int tipohabi = JOptionPane.showOptionDialog(null, "Horario de la Actividad", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, tipoHab, "Menu");
+                    int tipohabi = JOptionPane.showOptionDialog(null, "Tipo de Habitacion", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, tipoHab, "Menu");
                     int cantidadCamas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de camas"));
                     String[] opcionesDisponibilidad = {"NO", "SI"};
                     int disponibilidadIndex = JOptionPane.showOptionDialog(null, "Disponibilidad de Habitaciones", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opcionesDisponibilidad, "Menu");
@@ -211,7 +211,7 @@ public class Main {
                     break;
                 case 1:
                     String[] tipoHabitacion = {"Estandar", "Premium"};
-                    tipohabi = JOptionPane.showOptionDialog(null, "Horario de la Actividad", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, tipoHabitacion, "Menu");
+                    tipohabi = JOptionPane.showOptionDialog(null, "Tipo de Habitacion", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, tipoHabitacion, "Menu");
                     String tipoH = "";
                     
                     if(tipohabi  == 0){
