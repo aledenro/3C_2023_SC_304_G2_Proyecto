@@ -189,24 +189,84 @@ public class Main {
             switch (opcion) {
                 case 0:
                     int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la habitación"));
-                    int tipo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tipo de habitación 1. Individual 2. Matrimonial 3. Presidencial"));
+                    String[] tipoHab = {"Estandar", "Premium"};
+                    int tipohabi = JOptionPane.showOptionDialog(null, "Horario de la Actividad", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, tipoHab, "Menu");
                     int cantidadCamas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de camas"));
-
                     String[] opcionesDisponibilidad = {"NO", "SI"};
                     int disponibilidadIndex = JOptionPane.showOptionDialog(null, "Disponibilidad de Habitaciones", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opcionesDisponibilidad, "Menu");
                     String disponibilidad = opcionesDisponibilidad[disponibilidadIndex];
+                    String tipo = "";
+                    
+                    if(tipohabi  == 0){
+                        tipo = "Estandar";
+                    }else if(tipohabi  == 1){
+                        tipo = "Premium";
+                    }
+                    
+                    double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el  precio de la  habitación"));
+                    
+                    Habitaciones h =  new Habitaciones(id, tipo, cantidadCamas, disponibilidad, precio);
 
-                    l.Insertar(new Habitaciones(id, tipo, cantidadCamas, disponibilidad));
+                    l.Insertar(h);
                     break;
                 case 1:
+                    String[] tipoHabitacion = {"Estandar", "Premium"};
+                    tipohabi = JOptionPane.showOptionDialog(null, "Horario de la Actividad", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, tipoHabitacion, "Menu");
+                    String tipoH = "";
+                    
+                    if(tipohabi  == 0){
+                        tipoH = "Estandar";
+                    }else if(tipohabi  == 1){
+                        tipoH = "Premium";
+                    }
+
+                    System.out.println(l.printReservarHabitacion(tipoH));
+                    
+                    int idReservar = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la habitación que desea reservar."));
+                    l.reservarHabitacion(idReservar);
+                    
                     break;
                 case 2:
-                    String[] horarioP = {"SI"};
-                    disponibilidadIndex = JOptionPane.showOptionDialog(null, "Menu Habitaciones Disponibles", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, horarioP, "Menu");
-                    System.out.println(l.imprimirDisponibilidad(horarioP[disponibilidadIndex]));
-                    JOptionPane.showMessageDialog(null, l.imprimirDisponibilidad(horarioP[disponibilidadIndex]));
+                    System.out.println(l.imprimirDisponibilidad());
                     break;
                 case 3:
+                    String[] criterio = {"Cantidad de camas", "ID", "Tipo de habitación", "Precio"};
+                    int criterioIndex = JOptionPane.showOptionDialog(null, "Disponibilidad de Habitaciones", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, criterio, "Menu");
+                    String Criterio = criterio[criterioIndex];
+                    
+                    if(criterioIndex == 0){
+                        int criterioRev = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de camas"));
+                    
+                        int aumento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el porcentaje de aumento  de  precio que desea  aplicar.  No use %, solo ingrese el numero"));
+                    
+                        l.aumentarPrecio(Criterio, criterioRev, aumento);
+                    }else if(criterioIndex == 1){
+                        int criterioRev = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la  habitación"));
+                    
+                        int aumento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el porcentaje de aumento  de  precio que desea  aplicar.  No use %, solo ingrese el numero"));
+                    
+                        l.aumentarPrecio(Criterio, criterioRev, aumento);
+                    }if(criterioIndex == 2){
+                        String[] critRev = {"Estandar", "Premium"};
+                        tipohabi = JOptionPane.showOptionDialog(null, "Horario de la Actividad", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, critRev, "Menu");
+                        String criterioRevi = "";
+                    
+                        if(tipohabi  == 0){
+                            criterioRevi = "Estandar";
+                        }else if(tipohabi  == 1){
+                            criterioRevi = "Premium";
+                        }
+                    
+                        int aumento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el porcentaje de aumento  de  precio que desea  aplicar.  No use %, solo ingrese el numero"));
+                    
+                        //l.aumentarPrecio(Criterio, criterioRevi, aumento);
+                    }if(criterioIndex == 3){
+                        int criterioRev = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el precio que desea modificar"));
+                    
+                        int aumento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el porcentaje de aumento  de  precio que desea  aplicar.  No use %, solo ingrese el numero"));
+                    
+                        //l.aumentarPrecio(Criterio, criterioRev, aumento);
+                    }
                     break;
                 case 4:
                     break;

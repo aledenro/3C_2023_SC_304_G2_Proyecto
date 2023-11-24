@@ -10,22 +10,22 @@ package proyectoestructuradatosavance1;
  */
 public class Habitaciones {
     private int idHabitacion;
-    private int tipo;
+    private String tipo;
     private int cantidadCamas;
     private String disponibilidad;
+    private double precio;
    
 
-    public Habitaciones(int id, String tipoH, int cantidadCamas1, String disponibilidad1) {
-    }
 
-    public Habitaciones(int idHabitacion, int tipo, int cantidadCamas, String disponibilidad) {
+    public Habitaciones(int idHabitacion, String tipo, int cantidadCamas, String disponibilidad, double precio) {
         this.idHabitacion = idHabitacion;
         this.tipo = tipo;
         this.cantidadCamas = cantidadCamas;
         this.disponibilidad = disponibilidad;
+        this.precio = precio;
     }
 
-    public String isDisponibilidad() {
+    public String getDisponibilidad() {
         return disponibilidad;
     }
 
@@ -41,11 +41,11 @@ public class Habitaciones {
         this.idHabitacion = idHabitacion;
     }
 
-    public int getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(int tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
@@ -56,10 +56,18 @@ public class Habitaciones {
     public void setCantidadCamas(int cantidadCamas) {
         this.cantidadCamas = cantidadCamas;
     }
+    
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
 
     @Override
     public String toString() {
-        return "\n Habitaciones" + "- Habitacion Id: " + idHabitacion + "- Tipo: " + tipo + "- CantidadCamas: " + cantidadCamas + "- Disponibilidad: " + disponibilidad ;
+        return "Habitaciones{" + "idHabitacion=" + idHabitacion + ", tipo=" + tipo + ", cantidadCamas=" + cantidadCamas + ", disponibilidad=" + disponibilidad + ", precio=" + precio + '}';
     }
     
     

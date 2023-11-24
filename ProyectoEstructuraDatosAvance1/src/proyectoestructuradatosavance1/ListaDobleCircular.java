@@ -83,47 +83,127 @@ public class ListaDobleCircular {
         return respuesta;
     }
     
-    public String imprimirDisponibilidad(String D){
+    public String imprimirDisponibilidad(){
         String print = "";
-        String NoDisponibles = "";
-        String SiDisponibles = "";
         NodoLDC aux = cabeza;
         
         if(cabeza != null){
-            if(D.equalsIgnoreCase("NO")){
-                if(aux.getDato().isDisponibilidad().equalsIgnoreCase("NO")){
-                    NoDisponibles += aux.getDato().toString();
-                }
-                
-                aux = aux.getSiguiente();
-                while(aux != cabeza){
-                    if(aux.getDato().isDisponibilidad().equalsIgnoreCase("NO")){
-                        NoDisponibles += aux.getDato().toString();
-                    }
-                    aux = aux.getSiguiente();
-                }
-            }
-            
-            if(D.equalsIgnoreCase("SI")){
 
-                if(aux.getDato().isDisponibilidad().equalsIgnoreCase("SI")){
-                    SiDisponibles += aux.getDato().toString();
-                }
-                
-                aux = aux.getSiguiente();
-                while(aux != cabeza){
-                    if(aux.getDato().isDisponibilidad().equalsIgnoreCase("SI")){
-                        SiDisponibles += aux.getDato().toString();
-                    }
-                    aux = aux.getSiguiente();
-                }
+            if(aux.getDato().getDisponibilidad().equalsIgnoreCase("SI")){
+                print += aux.getDato().toString();        
             }
-            print = SiDisponibles+NoDisponibles; 
+
+            aux = aux.getSiguiente();
+            while(aux != cabeza){
+
+                if(aux.getDato().getDisponibilidad().equalsIgnoreCase("SI")){
+                    print += aux.getDato().toString();
+                }
+                aux = aux.getSiguiente();
+            }
+        }
+            
+        else{
+            print = "La lista de HABITACIONES está vacía";
+        }
+            
+        return print;
+    }
+    
+    public String printReservarHabitacion(String tipo){
+        String print = "";
+        NodoLDC aux = cabeza;
+        
+        if(cabeza != null){
+
+            if(aux.getDato().getDisponibilidad().equalsIgnoreCase("SI") && aux.getDato().getTipo().equalsIgnoreCase(tipo)){
+                print += aux.getDato().toString();        
+            }
+
+            aux = aux.getSiguiente();
+            while(aux != cabeza){
+
+                if(aux.getDato().getDisponibilidad().equalsIgnoreCase("SI") && aux.getDato().getTipo().equalsIgnoreCase(tipo)){
+                    print += aux.getDato().toString();
+                }
+                aux = aux.getSiguiente();
+            }
         }else{
             print = "La lista de HABITACIONES está vacía";
         }
             
         return print;
     }
-//iv. Incrementar tarifa 
+
+    public void reservarHabitacion(int id){
+        NodoLDC aux = cabeza;
+        
+        if(cabeza != null){
+
+            if(aux.getDato().getIdHabitacion() == id){
+                aux.getDato().setDisponibilidad("NO");
+            }
+
+            aux = aux.getSiguiente();
+            
+            while(aux != cabeza){
+
+                if(aux.getDato().getIdHabitacion() == id){
+                    aux.getDato().setDisponibilidad("NO");
+                    break;
+                }
+                
+                aux = aux.getSiguiente();
+            }
+        }
+    }
+    
+    public void aumentarPrecio(String criterio, int cantidad, double porcentaje){
+        NodoLDC aux = cabeza;
+        double percent = porcentaje / 100.0;
+        
+        System.out.println(percent);
+        
+        if(cabeza != null){
+            
+            if(criterio.equalsIgnoreCase("Cantidad de camas")){
+                if(aux.getDato().getCantidadCamas() == cantidad){
+                    aux.getDato().setPrecio(aux.getDato().getPrecio() + (aux.getDato().getPrecio() * percent));
+                }
+                
+                aux = aux.getSiguiente();
+            
+                while(aux != cabeza){
+
+                    if(aux.getDato().getCantidadCamas() == cantidad){
+                        aux.getDato().setPrecio(aux.getDato().getPrecio() + (aux.getDato().getPrecio() * percent));
+                    }
+
+                    aux = aux.getSiguiente();
+                }  
+            }
+            if(criterio.equalsIgnoreCase("ID")){
+                if(aux.getDato().getIdHabitacion() == cantidad){
+                    aux.getDato().setPrecio(aux.getDato().getPrecio() + (aux.getDato().getPrecio() * percent));
+                }
+                
+                aux = aux.getSiguiente();
+            
+                while(aux != cabeza){
+
+                    if(aux.getDato().getIdHabitacion() == cantidad){
+                        aux.getDato().setPrecio(aux.getDato().getPrecio() + (aux.getDato().getPrecio() * percent));
+                        break;
+                    }
+
+                    aux = aux.getSiguiente();
+                }  
+            }
+        }else{
+            System.out.println("La lista de HABITACIONES está vacía");
+        }
+    }
+    
+    
+
 }
