@@ -20,7 +20,7 @@ public class NodoLSC {
     
     @Override
     public String toString() {
-        return "Nodo{" + "dato=" + dato.getIdDesayuno()+ ' ' + dato.getDescripcion()+ '}';
+        return " \n " + " Desayuno: " + dato.getIdDesayuno()+ " Descripcion: " + dato.getDescripcion()+" Tipo Desayuno: "+ dato.getTipo() +" Calorias: "+ dato.getCalorias()+'}';
     }
 
     public Desayunos getDato() {

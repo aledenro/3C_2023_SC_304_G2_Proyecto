@@ -3,30 +3,19 @@ package proyectoestructuradatosavance1;
 import javax.swing.JOptionPane;
 
 public class Main {
-    
+
     private static Autos autos = new Autos();
     private static Clientes clientes = new Clientes();
-    
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ListaSimpleCircular LSCC = new ListaSimpleCircular();
-        LSCC.Insertar(new Desayunos(1,"A",1,10));
-        LSCC.Insertar(new Desayunos(2,"B",1,20));
-        LSCC.Insertar(new Desayunos(3,"C",1,30));
-        LSCC.Insertar(new Desayunos(4,"D",1,50));
-        LSCC.Insertar(new Desayunos(5, "C", 1, 40));
-        LSCC.ConsultaCalorias(35);
-        
-        //Eran test para probart todo borrar todo lo de arriba
-        //MenuPrincipal();
-        
+
+        MenuPrincipal();
     }
-}
-    
-    /*public static void MenuPrincipal() {
+
+    public static void MenuPrincipal() {
         String[] opciones = {"Autos", "Clientes", "Desayunos", "Itinerarios", "Habitaciones", "Salir"};
         int opcion = -1;
         while (opcion != opciones.length - 1) {
@@ -47,15 +36,15 @@ public class Main {
                 case 4:
                     MenuSecundarioHabitaciones();
                     break;
-                
+
                 case 5:
                     System.exit(0); //Termina la aplicación.
                     break;
-                
+
             }
         }
     }
-    
+
     public static void MenuSecundarioAutos() {
         Pila pila = new Pila();//creamos donde se guardaran los datos de la pila
         String[] opciones = {"Ingresar un Vehiculo", "Obtener Vehiculo", "Vaciar el Estacionamiento", "Cantidad de Vehiculos Estacionados", "Ver Vehiculos Estacionados", "Verificar si está Estacionado", "Regresar"};
@@ -83,14 +72,14 @@ public class Main {
                     placa = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la placa a buscar"));
                     pila.EstacionadoRecursiva(placa);
                     break;
-                
+
                 case 6:
                     break;
-                
+
             }
         }
     }
-    
+
     public static void MenuSecundarioClientes() {
         Cola cola = new Cola();
         String[] opciones = {"Ingresar Cliente", "Atender Cliente", "Vaciar Cola", "Ubicar Posicion del Cliente", "Cantidad de Clientes", "Prioridad con Membresia", "Salir"};
@@ -118,11 +107,11 @@ public class Main {
                     break;
                 case 6:
                     break;
-                
+
             }
         }
     }
-    
+
     public static void MenuSecundarioDesayunos() {
         ListaSimpleCircular LSC = new ListaSimpleCircular();
         String[] opciones = {"Ingresar Desayuno", "Ver Desayunos", "Modificar Desayuno", "Desayunos dieteticos", "Salir"};
@@ -131,24 +120,32 @@ public class Main {
             opcion = JOptionPane.showOptionDialog(null, "Menu Desayunos", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
             switch (opcion) {
                 case 0:
+                    int idDesayuno = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID del desayuno"));
+                    String descripcion = JOptionPane.showInputDialog("Ingrese la descripción del desayuno");
+                    int tipo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tipo del desayuno"));
+                    int calorias = Integer.parseInt(JOptionPane.showInputDialog("Ingrese las calorías del desayuno"));
+                    Desayunos nuevoDesayuno = new Desayunos(idDesayuno, descripcion, tipo, calorias);
+                    LSC.Insertar(nuevoDesayuno);
                     break;
                 case 1:
-                    LSC.toString();
+                    JOptionPane.showMessageDialog(null,LSC);
                     break;
                 case 2:
-                    
+
                     break;
                 case 3:
+                   
+
                     break;
                 case 4:
                     break;
-                
+
             }
         }
     }
-    
+
     public static void MenuSecundarioItinerario() {
-        
+
         ListaActividades la = new ListaActividades();
         String[] opciones = {"Ingresar Nueva Actividad", "Ver Todas las Actividades", "Eliminar Actividad", "Mostrar Actividades por Horario", "Salir"};
         int opcion = -1;
@@ -178,11 +175,11 @@ public class Main {
                     System.out.println(la.imprimirPorHorario(horarioP[horarios]));
                     break;
                 case 4:
-                    break;   
+                    break;
             }
         }
     }
-    
+
     public static void MenuSecundarioHabitaciones() {
         ListaDobleCircular l = new ListaDobleCircular();
         String[] opciones = {"Ingresar Nueva Habitacion", "Reservar habitacion", "Ver Habitaciones disponibles", "Incrementar tarifa", "Salir"};
@@ -191,7 +188,7 @@ public class Main {
             opcion = JOptionPane.showOptionDialog(null, "Menu Habitaciones", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
             switch (opcion) {
                 case 0:
-                    
+
                     break;
                 case 1:
                     break;
@@ -201,9 +198,8 @@ public class Main {
                     break;
                 case 4:
                     break;
-                
+
             }
         }
     }
 }
-*/
