@@ -157,12 +157,12 @@ public class ListaDobleCircular {
             }
         }
     }
-    
+    //iv.
     public void aumentarPrecio(String criterio, int cantidad, double porcentaje){
         NodoLDC aux = cabeza;
         double percent = porcentaje / 100.0;
         
-        System.out.println(percent);
+        
         
         if(cabeza != null){
             
@@ -180,10 +180,65 @@ public class ListaDobleCircular {
                     }
 
                     aux = aux.getSiguiente();
-                }  
+                }
             }
-            if(criterio.equalsIgnoreCase("ID")){
-                if(aux.getDato().getIdHabitacion() == cantidad){
+            if (criterio.equalsIgnoreCase("ID")) {
+                if (aux.getDato().getIdHabitacion() == cantidad) {
+                    aux.getDato().setPrecio(aux.getDato().getPrecio() + (aux.getDato().getPrecio() * percent));
+                }
+
+                aux = aux.getSiguiente();
+
+                while (aux != cabeza) {
+
+                    if (aux.getDato().getIdHabitacion() == cantidad) {
+                        aux.getDato().setPrecio(aux.getDato().getPrecio() + (aux.getDato().getPrecio() * percent));
+                        break;
+                    }
+
+                    aux = aux.getSiguiente();
+                }
+            }//Se duplica porque el Joption pane solo tira valores booleanos , por eso el metodo no acepta cantidad de tipo string se duplica
+            if (criterio.equalsIgnoreCase("Tipo de habitación")) {
+                if (cantidad == 0) {
+                    if (aux.getDato().getTipo().equals("Estandar")) {
+                        aux.getDato().setPrecio(aux.getDato().getPrecio() + (aux.getDato().getPrecio() * percent));
+                    }
+
+                    aux = aux.getSiguiente();
+
+                    while (aux != cabeza) {
+
+                        if (aux.getDato().getTipo().equals("Estandar")) {
+                            aux.getDato().setPrecio(aux.getDato().getPrecio() + (aux.getDato().getPrecio() * percent));
+                            break;
+                        }
+
+                        aux = aux.getSiguiente();
+                    }
+
+                } else if (cantidad == 1) {
+                    if (aux.getDato().getTipo().equals("Premium")) {
+                        aux.getDato().setPrecio(aux.getDato().getPrecio() + (aux.getDato().getPrecio() * percent));
+                    }
+
+                    aux = aux.getSiguiente();
+
+                    while (aux != cabeza) {
+
+                        if (aux.getDato().getTipo().equals("Premium")) {
+                            aux.getDato().setPrecio(aux.getDato().getPrecio() + (aux.getDato().getPrecio() * percent));
+                            break;
+                        }
+
+                        aux = aux.getSiguiente();
+                    }
+
+                }
+            }
+            
+            if(criterio.equalsIgnoreCase("Precio")){
+                if(aux.getDato().getPrecio() == cantidad){
                     aux.getDato().setPrecio(aux.getDato().getPrecio() + (aux.getDato().getPrecio() * percent));
                 }
                 
@@ -191,19 +246,17 @@ public class ListaDobleCircular {
             
                 while(aux != cabeza){
 
-                    if(aux.getDato().getIdHabitacion() == cantidad){
+                    if(aux.getDato().getPrecio() == cantidad){
                         aux.getDato().setPrecio(aux.getDato().getPrecio() + (aux.getDato().getPrecio() * percent));
-                        break;
                     }
 
                     aux = aux.getSiguiente();
-                }  
-            }
-        }else{
+                }
+                
+        } else {
             System.out.println("La lista de HABITACIONES está vacía");
         }
     }
-    
-    
 
+    }
 }

@@ -136,8 +136,8 @@ public class Main {
                     LSC.ModificaDos(desayunoModificar);
                     break;
                 case 3:
-                   // int caloriasConsulta = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de calorias a consultar"));
-                   //   LSC.ConsultaCalorias(caloriasConsulta);
+                   calorias = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de calorias a consultar"));
+                     LSC.ConsultaCalorias(calorias);
                     break;
 
             }
@@ -248,24 +248,24 @@ public class Main {
                         l.aumentarPrecio(Criterio, criterioRev, aumento);
                     }if(criterioIndex == 2){
                         String[] critRev = {"Estandar", "Premium"};
-                        tipohabi = JOptionPane.showOptionDialog(null, "Horario de la Actividad", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, critRev, "Menu");
-                        String criterioRevi = "";
-                    
-                        if(tipohabi  == 0){
-                            criterioRevi = "Estandar";
-                        }else if(tipohabi  == 1){
-                            criterioRevi = "Premium";
-                        }
-                    
+                    tipohabi = JOptionPane.showOptionDialog(null, "Horario de la Actividad", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, critRev, "Menu");
+                    String criterioRevi = "";
+
+                    if (tipohabi == 0) {
+                       criterioRevi = "Estandar";
+                    } else if (tipohabi == 1) {
+                        criterioRevi = "Premium";
+                    }
+                         
                         int aumento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el porcentaje de aumento  de  precio que desea  aplicar.  No use %, solo ingrese el numero"));
-                    
-                        //l.aumentarPrecio(Criterio, criterioRevi, aumento);
+                         l.aumentarPrecio(Criterio, tipohabi, aumento);
+                     
                     }if(criterioIndex == 3){
                         int criterioRev = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el precio que desea modificar"));
                     
                         int aumento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el porcentaje de aumento  de  precio que desea  aplicar.  No use %, solo ingrese el numero"));
                     
-                        //l.aumentarPrecio(Criterio, criterioRev, aumento);
+                        l.aumentarPrecio(Criterio, criterioRev, aumento);
                     }
                     break;
                 case 4:
