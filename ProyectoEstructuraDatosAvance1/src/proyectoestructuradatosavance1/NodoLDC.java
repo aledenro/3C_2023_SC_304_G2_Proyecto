@@ -41,8 +41,11 @@ public class NodoLDC {
         this.siguiente = siguiente;
     }
 
-    @Override
+ 
+   @Override
     public String toString() {
-        return dato.toString();
+        return " \n " + " Habitacion Id: " + dato.getIdHabitacion()+ " Tipo Habitacion: " + dato.getTipo()+" Cantidad de Camas: "+ dato.getCantidadCamas()+" Calorias: "+'}';
     }
+ 
+    
 }

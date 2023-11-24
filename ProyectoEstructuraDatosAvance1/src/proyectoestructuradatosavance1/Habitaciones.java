@@ -15,7 +15,7 @@ public class Habitaciones {
     private String disponibilidad;
    
 
-    public Habitaciones() {
+    public Habitaciones(int id, String tipoH, int cantidadCamas1, String disponibilidad1) {
     }
 
     public Habitaciones(int idHabitacion, int tipo, int cantidadCamas, String disponibilidad) {
@@ -59,7 +59,7 @@ public class Habitaciones {
 
     @Override
     public String toString() {
-        return "Habitaciones{" + "idHabitacion=" + idHabitacion + ", tipo=" + tipo + ", cantidadCamas=" + cantidadCamas + ", disponibilidad=" + disponibilidad + '}';
+        return "\n Habitaciones" + "- Habitacion Id: " + idHabitacion + "- Tipo: " + tipo + "- CantidadCamas: " + cantidadCamas + "- Disponibilidad: " + disponibilidad ;
     }
     
     

@@ -21,12 +21,7 @@ public class ListaDobleCircular {
         //private int tipo;
         //private int cantidadCamas;
         //private boolean disponibilidad;
-        Habitaciones h = new Habitaciones();
-        h.setIdHabitacion(Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id de la habitacion.")));
-        h.setTipo(Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tipo de habitacion.")));
-        h.setCantidadCamas(Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de camas de la habitacion")));
-        h.setDisponibilidad(JOptionPane.showInputDialog("Esta disponible SI o NO"));
-        
+ 
         // Crear el objeto Habitaciones con la entrada del usuario
         if (cabeza == null) {
             cabeza = new NodoLDC(p);
@@ -87,6 +82,48 @@ public class ListaDobleCircular {
         }
         return respuesta;
     }
+    
+    public String imprimirDisponibilidad(String D){
+        String print = "";
+        String NoDisponibles = "";
+        String SiDisponibles = "";
+        NodoLDC aux = cabeza;
+        
+        if(cabeza != null){
+            if(D.equalsIgnoreCase("NO")){
+                if(aux.getDato().isDisponibilidad().equalsIgnoreCase("NO")){
+                    NoDisponibles += aux.getDato().toString();
+                }
+                
+                aux = aux.getSiguiente();
+                while(aux != cabeza){
+                    if(aux.getDato().isDisponibilidad().equalsIgnoreCase("NO")){
+                        NoDisponibles += aux.getDato().toString();
+                    }
+                    aux = aux.getSiguiente();
+                }
+            }
+            
+            if(D.equalsIgnoreCase("SI")){
 
+                if(aux.getDato().isDisponibilidad().equalsIgnoreCase("SI")){
+                    SiDisponibles += aux.getDato().toString();
+                }
+                
+                aux = aux.getSiguiente();
+                while(aux != cabeza){
+                    if(aux.getDato().isDisponibilidad().equalsIgnoreCase("SI")){
+                        SiDisponibles += aux.getDato().toString();
+                    }
+                    aux = aux.getSiguiente();
+                }
+            }
+            print = SiDisponibles+NoDisponibles; 
+        }else{
+            print = "La lista de HABITACIONES está vacía";
+        }
+            
+        return print;
+    }
 //iv. Incrementar tarifa 
 }

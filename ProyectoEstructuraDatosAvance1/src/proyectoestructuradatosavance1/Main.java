@@ -128,16 +128,16 @@ public class Main {
                     LSC.Insertar(nuevoDesayuno);
                     break;
                 case 1:
-                    JOptionPane.showMessageDialog(null,LSC);
+                    JOptionPane.showMessageDialog(null, LSC);
                     break;
                 case 2:
-
+                    int idModificar = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID del desayuno a modificar"));
+                    Desayunos desayunoModificar = new Desayunos(idModificar, "", 0, 0);
+                    LSC.ModificaDos(desayunoModificar);
                     break;
                 case 3:
-                   
-
-                    break;
-                case 4:
+                   // int caloriasConsulta = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de calorias a consultar"));
+                   //   LSC.ConsultaCalorias(caloriasConsulta);
                     break;
 
             }
@@ -188,11 +188,23 @@ public class Main {
             opcion = JOptionPane.showOptionDialog(null, "Menu Habitaciones", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
             switch (opcion) {
                 case 0:
+                    int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la habitación"));
+                    int tipo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tipo de habitación 1. Individual 2. Matrimonial 3. Presidencial"));
+                    int cantidadCamas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de camas"));
 
+                    String[] opcionesDisponibilidad = {"NO", "SI"};
+                    int disponibilidadIndex = JOptionPane.showOptionDialog(null, "Disponibilidad de Habitaciones", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opcionesDisponibilidad, "Menu");
+                    String disponibilidad = opcionesDisponibilidad[disponibilidadIndex];
+
+                    l.Insertar(new Habitaciones(id, tipo, cantidadCamas, disponibilidad));
                     break;
                 case 1:
                     break;
                 case 2:
+                    String[] horarioP = {"SI"};
+                    disponibilidadIndex = JOptionPane.showOptionDialog(null, "Menu Habitaciones Disponibles", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, horarioP, "Menu");
+                    System.out.println(l.imprimirDisponibilidad(horarioP[disponibilidadIndex]));
+                    JOptionPane.showMessageDialog(null, l.imprimirDisponibilidad(horarioP[disponibilidadIndex]));
                     break;
                 case 3:
                     break;
