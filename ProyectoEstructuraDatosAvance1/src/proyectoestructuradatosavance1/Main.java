@@ -12,11 +12,11 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        MenuPrincipal();   
+        MenuPrincipal();
     }
 
     public static void MenuPrincipal() {
-        String[] opciones = {"Autos", "Clientes", "Desayunos", "Itinerarios", "Habitaciones", "Salir"};
+        String[] opciones = {"Autos", "Clientes", "Desayunos", "Itinerarios", "Habitaciones", "Clientes Frecuentes", "Salir"};
         int opcion = -1;
         while (opcion != opciones.length - 1) {
             opcion = JOptionPane.showOptionDialog(null, "Bienvenido al Hotel", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");
@@ -36,8 +36,10 @@ public class Main {
                 case 4:
                     MenuSecundarioHabitaciones();
                     break;
-
                 case 5:
+                    MenuSecundarioClientesArbol();
+                    break;
+                case 6:
                     System.exit(0); //Termina la aplicación.
                     break;
 
@@ -136,8 +138,8 @@ public class Main {
                     LSC.ModificaDos(desayunoModificar);
                     break;
                 case 3:
-                   calorias = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de calorias a consultar"));
-                     LSC.ConsultaCalorias(calorias);
+                    calorias = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de calorias a consultar"));
+                    LSC.ConsultaCalorias(calorias);
                     break;
 
             }
@@ -196,16 +198,16 @@ public class Main {
                     int disponibilidadIndex = JOptionPane.showOptionDialog(null, "Disponibilidad de Habitaciones", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opcionesDisponibilidad, "Menu");
                     String disponibilidad = opcionesDisponibilidad[disponibilidadIndex];
                     String tipo = "";
-                    
-                    if(tipohabi  == 0){
+
+                    if (tipohabi == 0) {
                         tipo = "Estandar";
-                    }else if(tipohabi  == 1){
+                    } else if (tipohabi == 1) {
                         tipo = "Premium";
                     }
-                    
+
                     double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el  precio de la  habitación"));
-                    
-                    Habitaciones h =  new Habitaciones(id, tipo, cantidadCamas, disponibilidad, precio);
+
+                    Habitaciones h = new Habitaciones(id, tipo, cantidadCamas, disponibilidad, precio);
 
                     l.Insertar(h);
                     break;
@@ -213,18 +215,18 @@ public class Main {
                     String[] tipoHabitacion = {"Estandar", "Premium"};
                     tipohabi = JOptionPane.showOptionDialog(null, "Tipo de Habitacion", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, tipoHabitacion, "Menu");
                     String tipoH = "";
-                    
-                    if(tipohabi  == 0){
+
+                    if (tipohabi == 0) {
                         tipoH = "Estandar";
-                    }else if(tipohabi  == 1){
+                    } else if (tipohabi == 1) {
                         tipoH = "Premium";
                     }
 
                     System.out.println(l.printReservarHabitacion(tipoH));
-                    
+
                     int idReservar = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la habitación que desea reservar."));
                     l.reservarHabitacion(idReservar);
-                    
+
                     break;
                 case 2:
                     System.out.println(l.imprimirDisponibilidad());
@@ -233,38 +235,40 @@ public class Main {
                     String[] criterio = {"Cantidad de camas", "ID", "Tipo de habitación", "Precio"};
                     int criterioIndex = JOptionPane.showOptionDialog(null, "Disponibilidad de Habitaciones", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, criterio, "Menu");
                     String Criterio = criterio[criterioIndex];
-                    
-                    if(criterioIndex == 0){
-                        int criterioRev = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de camas"));
-                    
-                        int aumento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el porcentaje de aumento  de  precio que desea  aplicar.  No use %, solo ingrese el numero"));
-                    
-                        l.aumentarPrecio(Criterio, criterioRev, aumento);
-                    }else if(criterioIndex == 1){
-                        int criterioRev = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la  habitación"));
-                    
-                        int aumento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el porcentaje de aumento  de  precio que desea  aplicar.  No use %, solo ingrese el numero"));
-                    
-                        l.aumentarPrecio(Criterio, criterioRev, aumento);
-                    }if(criterioIndex == 2){
-                        String[] critRev = {"Estandar", "Premium"};
-                    tipohabi = JOptionPane.showOptionDialog(null, "Horario de la Actividad", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, critRev, "Menu");
-                    String criterioRevi = "";
 
-                    if (tipohabi == 0) {
-                       criterioRevi = "Estandar";
-                    } else if (tipohabi == 1) {
-                        criterioRevi = "Premium";
+                    if (criterioIndex == 0) {
+                        int criterioRev = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de camas"));
+
+                        int aumento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el porcentaje de aumento  de  precio que desea  aplicar.  No use %, solo ingrese el numero"));
+
+                        l.aumentarPrecio(Criterio, criterioRev, aumento);
+                    } else if (criterioIndex == 1) {
+                        int criterioRev = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la  habitación"));
+
+                        int aumento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el porcentaje de aumento  de  precio que desea  aplicar.  No use %, solo ingrese el numero"));
+
+                        l.aumentarPrecio(Criterio, criterioRev, aumento);
                     }
-                         
+                    if (criterioIndex == 2) {
+                        String[] critRev = {"Estandar", "Premium"};
+                        tipohabi = JOptionPane.showOptionDialog(null, "Horario de la Actividad", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, critRev, "Menu");
+                        String criterioRevi = "";
+
+                        if (tipohabi == 0) {
+                            criterioRevi = "Estandar";
+                        } else if (tipohabi == 1) {
+                            criterioRevi = "Premium";
+                        }
+
                         int aumento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el porcentaje de aumento  de  precio que desea  aplicar.  No use %, solo ingrese el numero"));
-                         l.aumentarPrecio(Criterio, tipohabi, aumento);
-                     
-                    }if(criterioIndex == 3){
+                        l.aumentarPrecio(Criterio, tipohabi, aumento);
+
+                    }
+                    if (criterioIndex == 3) {
                         int criterioRev = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el precio que desea modificar"));
-                    
+
                         int aumento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el porcentaje de aumento  de  precio que desea  aplicar.  No use %, solo ingrese el numero"));
-                    
+
                         l.aumentarPrecio(Criterio, criterioRev, aumento);
                     }
                     break;
@@ -274,4 +278,44 @@ public class Main {
             }
         }
     }
+
+    public static void MenuSecundarioClientesArbol() {
+        Arbol arbol = new Arbol();
+        String[] opciones = {"Añadir Cliente Frecuente", "Recorrer Clientes en Orden", "Recorrer Clientes pos orden", "Recorrer Clientes pre orden", "Cantidad de Clientes", "Salir"};
+        int opcion = -1;
+        while (opcion != opciones.length - 1) {
+            opcion = JOptionPane.showOptionDialog(null, "Menu Clientes", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
+            switch (opcion) {
+                case 0:
+                    Clientes nuevoCliente = new Clientes();
+                    nuevoCliente.setCedula(Integer.parseInt(JOptionPane.showInputDialog("Ingrese la Cédula del Cliente:")));
+                    nuevoCliente.setNombre(JOptionPane.showInputDialog("Ingrese el Nombre del Cliente:"));
+                    nuevoCliente.setEdad(Integer.parseInt(JOptionPane.showInputDialog("Ingrese la Edad del Cliente:")));
+                    int membresia = JOptionPane.showConfirmDialog(null, "¿Tiene membresía?", "Confirmación", JOptionPane.YES_NO_OPTION);
+                    if (membresia == JOptionPane.YES_OPTION) {
+                        nuevoCliente.setMembresia("si");
+                    } else {
+                        nuevoCliente.setMembresia("no");
+                    }
+                    nuevoCliente.setFechaReserva(JOptionPane.showInputDialog("Ingrese la fecha de la reserva en el siguiente formato.\n01-01-2023"));
+                    arbol.insertar(nuevoCliente);
+                    break;
+                case 1:
+                    arbol.recorrerEnOrden();
+                    break;
+                case 2:
+                    arbol.recorrerEnPosOrden();
+                    break;
+                case 3:
+                    arbol.recorrerEnPreOrden();
+                    break;
+                case 4:
+                    arbol.contarClientes();
+                case 6:
+                    break;
+
+            }
+        }
+    }
+
 }
